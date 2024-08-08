@@ -17,15 +17,17 @@ struct HomeScreenView: View {
                 .ignoresSafeArea()
             ScrollView {
                 VStack {
-                    ForEach(homeScreenViewModel.matches, id:\.id) { match in
-                        Text(match.name)
-                        Spacer()
-                            .frame(height:12)
+                    ForEach(0..<getMatchDataBinding().count, id:\.self) { index in
+                        MatchCardView(match: getMatchDataBinding()[index])
                     }
                     Spacer()
                 }
                 .environmentObject(homeScreenViewModel)
             }
         }
+    }
+    
+    func getMatchDataBinding() -> Binding<[Match]> {
+        $homeScreenViewModel.matches
     }
 }

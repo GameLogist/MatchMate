@@ -11,10 +11,10 @@ import SwiftUI
 struct Match: Identifiable {
     var id: UUID
     
-    var name: String
-    var age: Int
-    var address: String
-    var avatarURL: String
+    var name: String?
+    var age: Int?
+    var address: String?
+    var avatarURL: String?
 }
 
 @MainActor
