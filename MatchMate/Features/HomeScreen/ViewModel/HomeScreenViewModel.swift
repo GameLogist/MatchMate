@@ -18,9 +18,10 @@ class HomeScreenViewModel: ObservableObject {
         fetchMatches()
     }
     
-    func addMatchToDatabase(match: Match) {
+    func matchAnswered(match: Match, answer: Bool) {
         // Add to Coredata
     }
+    
     
     //
     // API Call

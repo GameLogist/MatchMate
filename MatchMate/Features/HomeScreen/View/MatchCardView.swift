@@ -16,8 +16,9 @@ struct MatchCardView: View {
         ZStack {
             Color(.white)
                 .ignoresSafeArea()
-            VStack(alignment: .leading) {
+            VStack() {
                 AsyncImage(url: URL(string: match.avatarURL ?? ""), content: view)
+                    .padding(16)
                 Text(match.name ?? "Title Not Found!")
                     .font(.system(size: 20))
                     .fontWeight(.bold)
@@ -29,22 +30,30 @@ struct MatchCardView: View {
                     .padding(16)
                 
                 HStack {
-                    Button(action: {}) {
+                    Button(action: {
+                        homeScreenViewModel.matchAnswered(match: match, answer: false);
+                    }) {
                             Image(systemName: "multiply")
                           }
                           .padding()
-                          .background(.blue)
+                          .background(.red.opacity(0.7))
                           .foregroundColor(.white)
                           .cornerRadius(.infinity)
-                    Button(action: {}) {
+                    Spacer()
+                        .frame(width: 12)
+                    Button(action: {
+                        homeScreenViewModel.matchAnswered(match: match, answer: true);
+                    }) {
                             Image(systemName: "checkmark")
                           }
                           .padding()
-                          .background(.blue)
+                          .background(.green.opacity(0.7))
                           .foregroundColor(.white)
                           .cornerRadius(.infinity)
                 }
+                .padding([.bottom], 32)
             }
+            .frame(maxWidth: .infinity)
         }
         .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 18))
