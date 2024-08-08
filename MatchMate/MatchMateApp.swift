@@ -10,11 +10,13 @@ import SwiftUI
 @main
 struct MatchMateApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject var homeScreenViewModel: HomeScreenViewModel = HomeScreenViewModel()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeScreenView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(homeScreenViewModel)
         }
     }
 }

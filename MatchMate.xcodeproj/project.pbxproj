@@ -16,6 +16,16 @@
 		BCD5866A2C6514AD005605D9 /* MatchMateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586692C6514AD005605D9 /* MatchMateTests.swift */; };
 		BCD586742C6514AD005605D9 /* MatchMateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586732C6514AD005605D9 /* MatchMateUITests.swift */; };
 		BCD586762C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586752C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift */; };
+		BCD586862C6515B7005605D9 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586852C6515B7005605D9 /* HomeScreenView.swift */; };
+		BCD586882C6515CD005605D9 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */; };
+		BCD586A02C651C42005605D9 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586892C651C42005605D9 /* ErrorModel.swift */; };
+		BCD586A12C651C42005605D9 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868B2C651C42005605D9 /* APIConstants.swift */; };
+		BCD586A22C651C42005605D9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868C2C651C42005605D9 /* NetworkConstants.swift */; };
+		BCD586A32C651C42005605D9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868D2C651C42005605D9 /* NetworkManager.swift */; };
+		BCD586A42C651C42005605D9 /* GetMatchesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868F2C651C42005605D9 /* GetMatchesRequestModel.swift */; };
+		BCD586A92C651C42005605D9 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586952C651C42005605D9 /* RequestModel.swift */; };
+		BCD586AA2C651C42005605D9 /* NowPlayingMoviesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586972C651C42005605D9 /* NowPlayingMoviesResponseModel.swift */; };
+		BCD586AF2C651C42005605D9 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5869D2C651C42005605D9 /* MatchService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,16 @@
 		BCD5866F2C6514AD005605D9 /* MatchMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD586732C6514AD005605D9 /* MatchMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateUITests.swift; sourceTree = "<group>"; };
 		BCD586752C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BCD586852C6515B7005605D9 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
+		BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
+		BCD586892C651C42005605D9 /* ErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		BCD5868B2C651C42005605D9 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		BCD5868C2C651C42005605D9 /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		BCD5868D2C651C42005605D9 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BCD5868F2C651C42005605D9 /* GetMatchesRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMatchesRequestModel.swift; sourceTree = "<group>"; };
+		BCD586952C651C42005605D9 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
+		BCD586972C651C42005605D9 /* NowPlayingMoviesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingMoviesResponseModel.swift; sourceTree = "<group>"; };
+		BCD5869D2C651C42005605D9 /* MatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +118,9 @@
 		BCD586522C6514A9005605D9 /* MatchMate */ = {
 			isa = PBXGroup;
 			children = (
+				BCD5869F2C651C42005605D9 /* Network */,
+				BCD586842C651592005605D9 /* HelperViews */,
+				BCD586822C651565005605D9 /* Features */,
 				BCD586532C6514A9005605D9 /* MatchMateApp.swift */,
 				BCD586552C6514A9005605D9 /* ContentView.swift */,
 				BCD586572C6514AC005605D9 /* Assets.xcassets */,
@@ -131,6 +154,94 @@
 				BCD586752C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift */,
 			);
 			path = MatchMateUITests;
+			sourceTree = "<group>";
+		};
+		BCD586822C651565005605D9 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586832C65157B005605D9 /* HomeScreen */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		BCD586832C65157B005605D9 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586852C6515B7005605D9 /* HomeScreenView.swift */,
+				BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		BCD586842C651592005605D9 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		BCD5868A2C651C42005605D9 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586892C651C42005605D9 /* ErrorModel.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		BCD5868E2C651C42005605D9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BCD5868B2C651C42005605D9 /* APIConstants.swift */,
+				BCD5868C2C651C42005605D9 /* NetworkConstants.swift */,
+				BCD5868D2C651C42005605D9 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		BCD586942C651C42005605D9 /* FetchMatches */ = {
+			isa = PBXGroup;
+			children = (
+				BCD5868F2C651C42005605D9 /* GetMatchesRequestModel.swift */,
+			);
+			path = FetchMatches;
+			sourceTree = "<group>";
+		};
+		BCD586962C651C42005605D9 /* RequestModels */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586942C651C42005605D9 /* FetchMatches */,
+				BCD586952C651C42005605D9 /* RequestModel.swift */,
+			);
+			path = RequestModels;
+			sourceTree = "<group>";
+		};
+		BCD5869C2C651C42005605D9 /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586972C651C42005605D9 /* NowPlayingMoviesResponseModel.swift */,
+			);
+			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		BCD5869E2C651C42005605D9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BCD5869D2C651C42005605D9 /* MatchService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		BCD5869F2C651C42005605D9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BCD5868A2C651C42005605D9 /* Error */,
+				BCD5868E2C651C42005605D9 /* Manager */,
+				BCD586962C651C42005605D9 /* RequestModels */,
+				BCD5869C2C651C42005605D9 /* ResponseModels */,
+				BCD5869E2C651C42005605D9 /* Services */,
+			);
+			name = Network;
+			path = ../../ReelVibe/ReelVibe/Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,10 +374,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD586A22C651C42005605D9 /* NetworkConstants.swift in Sources */,
+				BCD586A42C651C42005605D9 /* GetMatchesRequestModel.swift in Sources */,
+				BCD586A02C651C42005605D9 /* ErrorModel.swift in Sources */,
+				BCD586A32C651C42005605D9 /* NetworkManager.swift in Sources */,
 				BCD5865D2C6514AC005605D9 /* Persistence.swift in Sources */,
+				BCD586A92C651C42005605D9 /* RequestModel.swift in Sources */,
+				BCD586AA2C651C42005605D9 /* NowPlayingMoviesResponseModel.swift in Sources */,
+				BCD586882C6515CD005605D9 /* HomeScreenViewModel.swift in Sources */,
 				BCD586562C6514A9005605D9 /* ContentView.swift in Sources */,
+				BCD586A12C651C42005605D9 /* APIConstants.swift in Sources */,
+				BCD586862C6515B7005605D9 /* HomeScreenView.swift in Sources */,
 				BCD586602C6514AC005605D9 /* MatchMate.xcdatamodeld in Sources */,
 				BCD586542C6514A9005605D9 /* MatchMateApp.swift in Sources */,
+				BCD586AF2C651C42005605D9 /* MatchService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
