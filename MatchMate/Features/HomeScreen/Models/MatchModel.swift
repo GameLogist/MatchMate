@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 enum MatchState: Int {
     case unanswered = 0
@@ -14,7 +15,7 @@ enum MatchState: Int {
 }
 
 struct Match: Identifiable {
-    var id: UUID
+    var id: NSManagedObjectID
     
     var name: String?
     var age: Int?

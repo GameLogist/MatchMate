@@ -13,9 +13,10 @@ class HomeScreenViewModel: ObservableObject {
     
     // Single truth: The fetched API list will be stored here
     @Published var matches: [Match] = []
+    @Published var respondedMatches: [Match] = []
     
     init() {
-        fetchMatches()
+        loadMatches(forceLoad: false)
     }
     
     func matchAnswered(match: Match, answer: MatchState) {
@@ -23,6 +24,7 @@ class HomeScreenViewModel: ObservableObject {
         if let idx = matches.firstIndex(where: { $0.id == match.id }) {
             matches[idx].matchState = answer
         }
+        respondedMatches.append(match)
     }
     
     
@@ -30,21 +32,25 @@ class HomeScreenViewModel: ObservableObject {
     // API Call
     //
     
-    func fetchMatches() {
-        matches.removeAll()
-        MatchServices.getMatches(completion: { (result) in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    print("Matches - \(response?.results?.count ?? 0)")
-                    for person in response?.results ?? [] {
-                        self.appendToMatches(person: person)
+    func loadMatches(forceLoad: Bool) {
+        if(PersistenceController.shared.fetchHomeMatches().isEmpty || forceLoad) {
+           deleteAllHomeMatchesData()
+            MatchServices.getMatches(completion: { (result) in
+                switch result {
+                case .success(let response):
+                    DispatchQueue.main.async {
+                        print("Matches - \(response?.results?.count ?? 0)")
+                        for person in response?.results ?? [] {
+                            self.appendToMatches(person: person)
+                        }
                     }
+                case .failure(let error):
+                    print(error.localizedDescription)
                 }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
+            })
+        } else {
+            fetchHomeMatchesFromCoreData()
+        }
     }
     
     func appendToMatches(person: Person) {
@@ -63,13 +69,40 @@ class HomeScreenViewModel: ObservableObject {
         
         let url = person.picture?.large ?? ""
         
+        let objectId = PersistenceController.shared.addToHomeMatches(
+            name: fullName,
+            age: age ?? 0,
+            address: fullAddress,
+            avatarURL: url,
+            matchState: .unanswered)
+        
         let match = Match(
-            id: UUID(),
+            id: objectId,
             name: fullName,
             age: age,
             address: fullAddress,
             avatarURL: url, 
             matchState: .unanswered)
         self.matches.append(match)
+    }
+    
+    func fetchHomeMatchesFromCoreData() {
+        self.matches.removeAll()
+        var fetchedMatches = PersistenceController.shared.fetchHomeMatches()
+        for item in fetchedMatches {
+            matches.append(Match(
+                id: item.objectID,
+                name: item.name,
+                age: Int(item.age),
+                address: item.address,
+                avatarURL: item.imageUrl,
+                matchState: MatchState(rawValue: Int(item.matchState)) ?? .unanswered
+            ))
+        }
+    }
+    
+    func deleteAllHomeMatchesData() {
+        matches.removeAll()
+        PersistenceController.shared.clearHomeMatches()
     }
 }

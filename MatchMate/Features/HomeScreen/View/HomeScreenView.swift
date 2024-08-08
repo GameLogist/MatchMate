@@ -21,7 +21,7 @@ struct HomeScreenView: View {
                     HStack() {
                         Button(action: {
                             withAnimation {
-                                homeScreenViewModel.fetchMatches()
+                                homeScreenViewModel.loadMatches(forceLoad: true)
                             }
                         }) {
                             Image(systemName: "arrow.clockwise")
@@ -43,8 +43,6 @@ struct HomeScreenView: View {
                 }
                 ScrollView {
                     LazyVStack {
-
-                        
                         ForEach(0..<getMatchDataBinding().count, id:\.self) { index in
                             MatchCardView(match: getMatchDataBinding()[index])
                                 .padding(.horizontal, 48)
