@@ -9,7 +9,7 @@ import Foundation
 
 enum MatchState: Int {
     case unanswered = 0
-    case aceepted
+    case accepted
     case declined
 }
 

@@ -18,8 +18,11 @@ class HomeScreenViewModel: ObservableObject {
         fetchMatches()
     }
     
-    func matchAnswered(match: Match, answer: Bool) {
+    func matchAnswered(match: Match, answer: MatchState) {
         // Add to Coredata
+        if let idx = matches.firstIndex(where: { $0.id == match.id }) {
+            matches[idx].matchState = answer
+        }
     }
     
     
@@ -28,6 +31,7 @@ class HomeScreenViewModel: ObservableObject {
     //
     
     func fetchMatches() {
+        matches.removeAll()
         MatchServices.getMatches(completion: { (result) in
             switch result {
             case .success(let response):
