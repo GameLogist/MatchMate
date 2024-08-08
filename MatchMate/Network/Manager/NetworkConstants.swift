@@ -14,13 +14,7 @@ class NetworkConstants {
         // Singleton
     }
     
-    public var apiKey: String {
-        get {
-            return ""
-        }
-    }
-    
-    public var apiReadAccessToken: String {
+    public var token: String {
         get {
             return ""
         }
@@ -28,13 +22,7 @@ class NetworkConstants {
     
     public var serverAddress: String {
         get {
-            return ""
-        }
-    }
-    
-    public var imageServerAddress: String {
-        get {
-            return ""
+            return "https://randomuser.me/"
         }
     }
 }

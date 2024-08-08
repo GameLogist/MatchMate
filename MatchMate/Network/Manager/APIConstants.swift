@@ -9,7 +9,7 @@ import Foundation
 
 struct APIConstants {
     struct GetMatches {
-        static let matches = ""
+        static let matches = "api/?results=10"
     }
 }
 

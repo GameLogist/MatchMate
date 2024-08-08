@@ -14,22 +14,40 @@ struct MatchCardView: View {
     
     var body: some View {
         ZStack {
+            Color(.white)
+                .ignoresSafeArea()
             VStack(alignment: .leading) {
                 AsyncImage(url: URL(string: match.avatarURL ?? ""), content: view)
                 Text(match.name ?? "Title Not Found!")
-                    .font(.system(size: 12))
+                    .font(.system(size: 20))
                     .fontWeight(.bold)
-                    .padding([.leading, .top], 8)
+                    .padding([.leading, .top, .trailing], 16)
                 
-                Text(match.address ?? "Address Not Found!")
-                    .font(.system(size: 14))
+                Text("\(match.age ?? 0), \(match.address ?? "")")
+                    .font(.system(size: 16))
                     .foregroundStyle(.secondary)
-                    .padding([.leading, .top], 8)
+                    .padding(16)
+                
+                HStack {
+                    Button(action: {}) {
+                            Image(systemName: "multiply")
+                          }
+                          .padding()
+                          .background(.blue)
+                          .foregroundColor(.white)
+                          .cornerRadius(.infinity)
+                    Button(action: {}) {
+                            Image(systemName: "checkmark")
+                          }
+                          .padding()
+                          .background(.blue)
+                          .foregroundColor(.white)
+                          .cornerRadius(.infinity)
+                }
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 260)
-            .clipShape(RoundedRectangle(cornerRadius: 18))
         }
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 18))
     }
     
     // Async Image handler to show loader or error message
@@ -44,7 +62,7 @@ struct MatchCardView: View {
         case .success(let image):
             image
                 .resizable()
-                .frame(height: 180)
+                .frame(width: 180, height: 180)
                 .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 18))
         case .failure(let error):

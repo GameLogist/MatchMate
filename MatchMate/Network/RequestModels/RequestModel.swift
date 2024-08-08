@@ -44,7 +44,7 @@ class RequestModel: NSObject {
     
     var token: String {
         // One can store this in user defaults as well
-        return NetworkConstants.shared.apiReadAccessToken
+        return NetworkConstants.shared.token
     }
 }
 

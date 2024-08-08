@@ -8,15 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct Match: Identifiable {
-    var id: UUID
-    
-    var name: String?
-    var age: Int?
-    var address: String?
-    var avatarURL: String?
-}
-
 @MainActor
 class HomeScreenViewModel: ObservableObject {
     
@@ -24,13 +15,11 @@ class HomeScreenViewModel: ObservableObject {
     @Published var matches: [Match] = []
     
     init() {
-        self.matches = [
-            Match(id: UUID(), name: "ayush", age: 12, address: "53 Bhagwati Vihar", avatarURL: ""),
-            Match(id: UUID(), name: "ayush", age: 12, address: "53 Bhagwati Vihar", avatarURL: ""),
-            Match(id: UUID(), name: "ayush", age: 12, address: "53 Bhagwati Vihar", avatarURL: ""),
-            Match(id: UUID(), name: "ayush", age: 12, address: "53 Bhagwati Vihar", avatarURL: ""),
-            Match(id: UUID(), name: "ayush", age: 12, address: "53 Bhagwati Vihar", avatarURL: "")
-        ]
+        fetchMatches()
+    }
+    
+    func addMatchToDatabase(match: Match) {
+        // Add to Coredata
     }
     
     //
@@ -38,6 +27,44 @@ class HomeScreenViewModel: ObservableObject {
     //
     
     func fetchMatches() {
+        MatchServices.getMatches(completion: { (result) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print("Matches - \(response?.results?.count ?? 0)")
+                    for person in response?.results ?? [] {
+                        self.appendToMatches(person: person)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+    }
+    
+    func appendToMatches(person: Person) {
+        let title = person.name?.title ?? ""
+        let firstName = person.name?.first ?? ""
+        let lastName = person.name?.last ?? ""
+        let fullName = "\(title) \(firstName) \(lastName)"
         
+        let age = person.registered?.age
+        
+        let street = person.location?.street?.name ?? ""
+        let state = person.location?.state ?? ""
+        let city = person.location?.city ?? ""
+        let country = person.location?.country ?? ""
+        let fullAddress = "\(street), \(state), \(city), \(country)"
+        
+        let url = person.picture?.large ?? ""
+        
+        let match = Match(
+            id: UUID(),
+            name: fullName,
+            age: age,
+            address: fullAddress,
+            avatarURL: url, 
+            matchState: .unanswered)
+        self.matches.append(match)
     }
 }
