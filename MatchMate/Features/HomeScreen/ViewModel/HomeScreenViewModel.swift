@@ -19,12 +19,42 @@ class HomeScreenViewModel: ObservableObject {
         loadMatches(forceLoad: false)
     }
     
-    func matchAnswered(match: Match, answer: MatchState) {
+    func homeMatchAnswered(match: Match, answer: MatchState) {
         // Add to Coredata
-        if let idx = matches.firstIndex(where: { $0.id == match.id }) {
-            matches[idx].matchState = answer
+        if(answer != .unanswered) {
+            if let idx = matches.firstIndex(where: { $0.id == match.id }) {
+                matches[idx].matchState = answer
+                PersistenceController.shared.editHomePageEntity(match.id, matchState: answer)
+                
+                let objectId = PersistenceController.shared.addToRespondedMatches(
+                    name: match.name ?? "",
+                    age: match.age ?? 0,
+                    address: match.address ?? "",
+                    avatarURL: match.avatarURL ?? "",
+                    matchState: answer)
+                let tempMatch = Match(
+                    id: objectId,
+                    name: match.name,
+                    age: match.age,
+                    address: match.address,
+                    avatarURL: match.avatarURL,
+                    matchState: answer)
+                self.respondedMatches.append(tempMatch)
+                PersistenceController.shared.deleteHomePageEntity(match.id)
+                loadSingleMatch()
+                fetchHomeMatchesFromCoreData()
+            }
         }
-        respondedMatches.append(match)
+        fetchRespondedMatchesFromCoreData()
+    }
+    
+    func respondedMatchAnswered(match: Match, answer: MatchState) {
+        // Add to Coredata
+        if let idx = respondedMatches.firstIndex(where: { $0.id == match.id }) {
+            respondedMatches[idx].matchState = answer
+            PersistenceController.shared.editRespondedPageEntity(match.id, matchState: answer)
+        }
+        fetchRespondedMatchesFromCoreData()
     }
     
     
@@ -34,7 +64,6 @@ class HomeScreenViewModel: ObservableObject {
     
     func loadMatches(forceLoad: Bool) {
         if(PersistenceController.shared.fetchHomeMatches().isEmpty || forceLoad) {
-           deleteAllHomeMatchesData()
             MatchServices.getMatches(completion: { (result) in
                 switch result {
                 case .success(let response):
@@ -51,7 +80,29 @@ class HomeScreenViewModel: ObservableObject {
         } else {
             fetchHomeMatchesFromCoreData()
         }
+        fetchRespondedMatchesFromCoreData()
     }
+    
+    func loadSingleMatch() {
+        MatchServices.getSingleMatch(completion: { (result) in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    print("Match - \(response?.results?.count ?? 0)")
+                    for person in response?.results ?? [] {
+                        self.appendToMatches(person: person)
+                    }
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+        fetchHomeMatchesFromCoreData()
+    }
+    
+    //
+    //  Data Management
+    //
     
     func appendToMatches(person: Person) {
         let title = person.name?.title ?? ""
@@ -81,16 +132,31 @@ class HomeScreenViewModel: ObservableObject {
             name: fullName,
             age: age,
             address: fullAddress,
-            avatarURL: url, 
+            avatarURL: url,
             matchState: .unanswered)
         self.matches.append(match)
     }
     
     func fetchHomeMatchesFromCoreData() {
         self.matches.removeAll()
-        var fetchedMatches = PersistenceController.shared.fetchHomeMatches()
+        let fetchedMatches = PersistenceController.shared.fetchHomeMatches()
         for item in fetchedMatches {
             matches.append(Match(
+                id: item.objectID,
+                name: item.name,
+                age: Int(item.age),
+                address: item.address,
+                avatarURL: item.imageUrl,
+                matchState: MatchState(rawValue: Int(item.matchState)) ?? .unanswered
+            ))
+        }
+    }
+    
+    func fetchRespondedMatchesFromCoreData() {
+        self.respondedMatches.removeAll()
+        let fetchedMatches = PersistenceController.shared.fetchRespondedMatches()
+        for item in fetchedMatches {
+            respondedMatches.append(Match(
                 id: item.objectID,
                 name: item.name,
                 age: Int(item.age),

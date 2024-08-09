@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum CardOnwer {
+    case HomePage
+    case RespondedPage
+}
+
 struct HomeScreenView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
@@ -19,23 +24,14 @@ struct HomeScreenView: View {
             VStack {
                 ZStack {
                     HStack() {
-                        Button(action: {
-                            withAnimation {
-                                homeScreenViewModel.loadMatches(forceLoad: true)
-                            }
-                        }) {
-                            Image(systemName: "arrow.clockwise")
+                        Spacer()
+                        NavigationLink(destination: RespondedMatchesView().environmentObject(homeScreenViewModel)) {
+                            Image(systemName: "heart.fill")
                                 .resizable()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(.green)
+                                .foregroundColor(.red)
                                 .padding()
                         }
-                        Spacer()
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.red)
-                            .padding()
                     }
                     Text("Profile Matches")
                         .font(.title)
@@ -44,7 +40,7 @@ struct HomeScreenView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(0..<getMatchDataBinding().count, id:\.self) { index in
-                            MatchCardView(match: getMatchDataBinding()[index])
+                            MatchCardView(match: getMatchDataBinding()[index], ownerScreen: .HomePage)
                                 .padding(.horizontal, 48)
                                 .padding(.bottom, 24)
                         }

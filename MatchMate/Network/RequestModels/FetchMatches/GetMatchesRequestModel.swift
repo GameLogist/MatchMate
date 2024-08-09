@@ -17,3 +17,14 @@ class GetMatchesRequestModel: RequestModel {
         return HTTPMethod.get
     }
 }
+
+class GetSingleMatchRequestModel: RequestModel {
+    
+    override var path: String {
+        return APIConstants.GetMatches.match
+    }
+    
+    override var method: HTTPMethod {
+        return HTTPMethod.get
+    }
+}

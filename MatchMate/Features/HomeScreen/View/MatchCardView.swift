@@ -11,6 +11,7 @@ struct MatchCardView: View {
     
     @Binding var match: Match
     @EnvironmentObject var homeScreenViewModel: HomeScreenViewModel
+    var ownerScreen: CardOnwer
     
     var body: some View {
         ZStack {
@@ -32,7 +33,11 @@ struct MatchCardView: View {
                 if(match.matchState == .accepted) {
                     Button("Accepted") {
                         withAnimation {
-                            homeScreenViewModel.matchAnswered(match: match, answer: .unanswered);
+                            if(ownerScreen == .HomePage) {
+                                homeScreenViewModel.homeMatchAnswered(match: match, answer: .unanswered);
+                            } else {
+                                homeScreenViewModel.respondedMatchAnswered(match: match, answer: .unanswered);
+                            }
                         }
                     }
                     .buttonStyle(.bordered)
@@ -41,9 +46,14 @@ struct MatchCardView: View {
                     .foregroundColor(.green)
                     .padding([.bottom], 32)
                 } else if (match.matchState == .declined) {
-                    Button("Declined") {withAnimation {
-                        homeScreenViewModel.matchAnswered(match: match, answer: .unanswered);
-                    }}
+                    Button("Declined") {
+                        withAnimation {
+                            if(ownerScreen == .HomePage) {
+                                homeScreenViewModel.homeMatchAnswered(match: match, answer: .unanswered);
+                            } else {
+                                homeScreenViewModel.respondedMatchAnswered(match: match, answer: .unanswered);
+                            }
+                        }}
                     .buttonStyle(.bordered)
                     .controlSize(.extraLarge)
                     .buttonBorderShape(.roundedRectangle)
@@ -53,7 +63,11 @@ struct MatchCardView: View {
                     HStack {
                         Button(action: {
                             withAnimation {
-                                homeScreenViewModel.matchAnswered(match: match, answer: .declined);
+                                if(ownerScreen == .HomePage) {
+                                    homeScreenViewModel.homeMatchAnswered(match: match, answer: .declined);
+                                } else {
+                                    homeScreenViewModel.respondedMatchAnswered(match: match, answer: .declined);
+                                }
                             }
                         }) {
                             Image(systemName: "multiply")
@@ -66,7 +80,11 @@ struct MatchCardView: View {
                             .frame(width: 24)
                         Button(action: {
                             withAnimation {
-                                homeScreenViewModel.matchAnswered(match: match, answer: .accepted);
+                                if(ownerScreen == .HomePage) {
+                                    homeScreenViewModel.homeMatchAnswered(match: match, answer: .accepted);
+                                } else {
+                                    homeScreenViewModel.respondedMatchAnswered(match: match, answer: .accepted);
+                                }
                             }
                         }) {
                             Image(systemName: "checkmark")

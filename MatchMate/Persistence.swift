@@ -81,6 +81,37 @@ struct PersistenceController {
         return newMatch.objectID
     }
     
+    func editHomePageEntity(_ id: NSManagedObjectID, matchState: MatchState) {
+        do {
+            let entity = try container.viewContext.existingObject(with: id) as? MatchEntity
+            entity?.matchState = Int16(matchState.rawValue)
+            saveData()
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+    }
+    
+    func editRespondedPageEntity(_ id: NSManagedObjectID, matchState: MatchState) {
+        do {
+            let entity = try container.viewContext.existingObject(with: id) as? RespondedMatchEntity
+            entity?.matchState = Int16(matchState.rawValue)
+            saveData()
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+    }
+    
+    func deleteHomePageEntity(_ id: NSManagedObjectID) {
+        do {
+            if let entity = try container.viewContext.existingObject(with: id) as? MatchEntity {
+                container.viewContext.delete(entity)
+            }
+            saveData()
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+    }
+    
     func clearHomeMatches() {
         // get all entities and loop over them
         let entityNames = self.container.managedObjectModel.entities.map({ $0.name!})
@@ -92,8 +123,8 @@ struct PersistenceController {
                 try self.container.viewContext.execute(deleteRequest)
                 try self.container.viewContext.save()
                 print("Home matches cleared from CoreData")
-            } catch {
-                // error
+            } catch let error {
+                print("Error Clearing : \(error)")
             }
         }
     }
