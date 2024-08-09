@@ -29,6 +29,7 @@
 		BCD586DB2C655557005605D9 /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586DA2C655557005605D9 /* MatchModel.swift */; };
 		BCD586DD2C658BDD005605D9 /* RespondedMatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586DC2C658BDD005605D9 /* RespondedMatchesView.swift */; };
 		BCD586DF2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586DE2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift */; };
+		BCD586E22C65EBFD005605D9 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586E12C65EBFD005605D9 /* StringConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		BCD586DA2C655557005605D9 /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
 		BCD586DC2C658BDD005605D9 /* RespondedMatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondedMatchesView.swift; sourceTree = "<group>"; };
 		BCD586DE2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSingleMatchRequestModel.swift; sourceTree = "<group>"; };
+		BCD586E12C65EBFD005605D9 /* StringConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		BCD586522C6514A9005605D9 /* MatchMate */ = {
 			isa = PBXGroup;
 			children = (
+				BCD586E02C65EBE6005605D9 /* Constants */,
 				BCD586C02C652545005605D9 /* Network */,
 				BCD586842C651592005605D9 /* HelperViews */,
 				BCD586822C651565005605D9 /* Features */,
@@ -276,6 +279,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BCD586E02C65EBE6005605D9 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586E12C65EBFD005605D9 /* StringConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -408,6 +419,7 @@
 			files = (
 				BCD586D42C6526C2005605D9 /* ErrorModel.swift in Sources */,
 				BCD5865D2C6514AC005605D9 /* Persistence.swift in Sources */,
+				BCD586E22C65EBFD005605D9 /* StringConstants.swift in Sources */,
 				BCD586C62C652545005605D9 /* MatchesResponseModel.swift in Sources */,
 				BCD586D22C6526AC005605D9 /* RequestModel.swift in Sources */,
 				BCD586CE2C652690005605D9 /* NetworkConstants.swift in Sources */,

@@ -18,7 +18,7 @@ struct RespondedMatchesView: View {
                 .ignoresSafeArea()
             VStack {
                 if(homeScreenViewModel.respondedMatches.isEmpty) {
-                    Text("Respond to some matches to save them here! You can edit your choices as well")
+                    Text(StringConstants.RespondedPage.emptyListMessage)
                         .font(.system(size: 20))
                         .padding(24)
                 } else {
@@ -35,7 +35,7 @@ struct RespondedMatchesView: View {
                 }
             }
         }
-        .navigationTitle("Responded Matches")
+        .navigationTitle(StringConstants.RespondedPage.title)
     }
     
     func getMatchDataBinding() -> Binding<[Match]> {

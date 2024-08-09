@@ -20,7 +20,7 @@ struct MatchCardView: View {
             VStack() {
                 AsyncImage(url: URL(string: match.avatarURL ?? ""), content: view)
                     .padding(16)
-                Text(match.name ?? "Title Not Found!")
+                Text(match.name ?? "Name Not Found!")
                     .font(.system(size: 20))
                     .fontWeight(.bold)
                     .padding([.leading, .top, .trailing], 16)
@@ -31,7 +31,7 @@ struct MatchCardView: View {
                     .padding(16)
                 
                 if(match.matchState == .accepted) {
-                    Button("Accepted") {
+                    Button(StringConstants.Common.accepted) {
                         withAnimation {
                             if(ownerScreen == .HomePage) {
                                 homeScreenViewModel.homeMatchAnswered(match: match, answer: .unanswered);
@@ -46,7 +46,7 @@ struct MatchCardView: View {
                     .foregroundColor(.green)
                     .padding([.bottom], 32)
                 } else if (match.matchState == .declined) {
-                    Button("Declined") {
+                    Button(StringConstants.Common.declined) {
                         withAnimation {
                             if(ownerScreen == .HomePage) {
                                 homeScreenViewModel.homeMatchAnswered(match: match, answer: .unanswered);
