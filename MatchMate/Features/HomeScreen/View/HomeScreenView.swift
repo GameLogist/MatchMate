@@ -33,7 +33,7 @@ struct HomeScreenView: View {
                                 .padding()
                         }
                     }
-                    Text("Profile Matches")
+                    Text(StringConstants.HomePage.title)
                         .font(.title)
                         .fontWeight(.bold)
                 }
