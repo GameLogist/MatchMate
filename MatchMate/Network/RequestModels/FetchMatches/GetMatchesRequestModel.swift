@@ -18,13 +18,3 @@ class GetMatchesRequestModel: RequestModel {
     }
 }
 
-class GetSingleMatchRequestModel: RequestModel {
-    
-    override var path: String {
-        return APIConstants.GetMatches.match
-    }
-    
-    override var method: HTTPMethod {
-        return HTTPMethod.get
-    }
-}

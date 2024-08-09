@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		BCD586542C6514A9005605D9 /* MatchMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586532C6514A9005605D9 /* MatchMateApp.swift */; };
-		BCD586562C6514A9005605D9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586552C6514A9005605D9 /* ContentView.swift */; };
 		BCD586582C6514AC005605D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD586572C6514AC005605D9 /* Assets.xcassets */; };
 		BCD5865B2C6514AC005605D9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCD5865A2C6514AC005605D9 /* Preview Assets.xcassets */; };
 		BCD5865D2C6514AC005605D9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5865C2C6514AC005605D9 /* Persistence.swift */; };
@@ -18,14 +17,18 @@
 		BCD586762C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586752C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift */; };
 		BCD586862C6515B7005605D9 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586852C6515B7005605D9 /* HomeScreenView.swift */; };
 		BCD586882C6515CD005605D9 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */; };
-		BCD586A02C651C42005605D9 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586892C651C42005605D9 /* ErrorModel.swift */; };
-		BCD586A12C651C42005605D9 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868B2C651C42005605D9 /* APIConstants.swift */; };
-		BCD586A22C651C42005605D9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868C2C651C42005605D9 /* NetworkConstants.swift */; };
-		BCD586A32C651C42005605D9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868D2C651C42005605D9 /* NetworkManager.swift */; };
-		BCD586A42C651C42005605D9 /* GetMatchesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5868F2C651C42005605D9 /* GetMatchesRequestModel.swift */; };
-		BCD586A92C651C42005605D9 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586952C651C42005605D9 /* RequestModel.swift */; };
-		BCD586AA2C651C42005605D9 /* NowPlayingMoviesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586972C651C42005605D9 /* NowPlayingMoviesResponseModel.swift */; };
-		BCD586AF2C651C42005605D9 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5869D2C651C42005605D9 /* MatchService.swift */; };
+		BCD586C12C652545005605D9 /* GetMatchesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586B22C652545005605D9 /* GetMatchesRequestModel.swift */; };
+		BCD586C62C652545005605D9 /* MatchesResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586B92C652545005605D9 /* MatchesResponseModel.swift */; };
+		BCD586CA2C652545005605D9 /* MatchServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586BE2C652545005605D9 /* MatchServices.swift */; };
+		BCD586CC2C652689005605D9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586CB2C652689005605D9 /* NetworkManager.swift */; };
+		BCD586CE2C652690005605D9 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586CD2C652690005605D9 /* NetworkConstants.swift */; };
+		BCD586D02C652695005605D9 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586CF2C652695005605D9 /* APIConstants.swift */; };
+		BCD586D22C6526AC005605D9 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586D12C6526AC005605D9 /* RequestModel.swift */; };
+		BCD586D42C6526C2005605D9 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586D32C6526C2005605D9 /* ErrorModel.swift */; };
+		BCD586D92C652932005605D9 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586D82C652932005605D9 /* MatchCardView.swift */; };
+		BCD586DB2C655557005605D9 /* MatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586DA2C655557005605D9 /* MatchModel.swift */; };
+		BCD586DD2C658BDD005605D9 /* RespondedMatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586DC2C658BDD005605D9 /* RespondedMatchesView.swift */; };
+		BCD586DF2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD586DE2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +51,6 @@
 /* Begin PBXFileReference section */
 		BCD586502C6514A9005605D9 /* MatchMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD586532C6514A9005605D9 /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
-		BCD586552C6514A9005605D9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BCD586572C6514AC005605D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCD5865A2C6514AC005605D9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCD5865C2C6514AC005605D9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -60,14 +62,18 @@
 		BCD586752C6514AD005605D9 /* MatchMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BCD586852C6515B7005605D9 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewModel.swift; sourceTree = "<group>"; };
-		BCD586892C651C42005605D9 /* ErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
-		BCD5868B2C651C42005605D9 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
-		BCD5868C2C651C42005605D9 /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
-		BCD5868D2C651C42005605D9 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		BCD5868F2C651C42005605D9 /* GetMatchesRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMatchesRequestModel.swift; sourceTree = "<group>"; };
-		BCD586952C651C42005605D9 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
-		BCD586972C651C42005605D9 /* NowPlayingMoviesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingMoviesResponseModel.swift; sourceTree = "<group>"; };
-		BCD5869D2C651C42005605D9 /* MatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
+		BCD586B22C652545005605D9 /* GetMatchesRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetMatchesRequestModel.swift; sourceTree = "<group>"; };
+		BCD586B92C652545005605D9 /* MatchesResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesResponseModel.swift; sourceTree = "<group>"; };
+		BCD586BE2C652545005605D9 /* MatchServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchServices.swift; sourceTree = "<group>"; };
+		BCD586CB2C652689005605D9 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BCD586CD2C652690005605D9 /* NetworkConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		BCD586CF2C652695005605D9 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		BCD586D12C6526AC005605D9 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
+		BCD586D32C6526C2005605D9 /* ErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		BCD586D82C652932005605D9 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
+		BCD586DA2C655557005605D9 /* MatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchModel.swift; sourceTree = "<group>"; };
+		BCD586DC2C658BDD005605D9 /* RespondedMatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespondedMatchesView.swift; sourceTree = "<group>"; };
+		BCD586DE2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSingleMatchRequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,11 +124,10 @@
 		BCD586522C6514A9005605D9 /* MatchMate */ = {
 			isa = PBXGroup;
 			children = (
-				BCD5869F2C651C42005605D9 /* Network */,
+				BCD586C02C652545005605D9 /* Network */,
 				BCD586842C651592005605D9 /* HelperViews */,
 				BCD586822C651565005605D9 /* Features */,
 				BCD586532C6514A9005605D9 /* MatchMateApp.swift */,
-				BCD586552C6514A9005605D9 /* ContentView.swift */,
 				BCD586572C6514AC005605D9 /* Assets.xcassets */,
 				BCD5865C2C6514AC005605D9 /* Persistence.swift */,
 				BCD5865E2C6514AC005605D9 /* MatchMate.xcdatamodeld */,
@@ -167,8 +172,9 @@
 		BCD586832C65157B005605D9 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
-				BCD586852C6515B7005605D9 /* HomeScreenView.swift */,
-				BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */,
+				BCD586D72C6527A3005605D9 /* Models */,
+				BCD586D62C652799005605D9 /* ViewModel */,
+				BCD586D52C652791005605D9 /* View */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -180,68 +186,94 @@
 			path = HelperViews;
 			sourceTree = "<group>";
 		};
-		BCD5868A2C651C42005605D9 /* Error */ = {
+		BCD586B02C652545005605D9 /* Error */ = {
 			isa = PBXGroup;
 			children = (
-				BCD586892C651C42005605D9 /* ErrorModel.swift */,
+				BCD586D32C6526C2005605D9 /* ErrorModel.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
 		};
-		BCD5868E2C651C42005605D9 /* Manager */ = {
+		BCD586B12C652545005605D9 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				BCD5868B2C651C42005605D9 /* APIConstants.swift */,
-				BCD5868C2C651C42005605D9 /* NetworkConstants.swift */,
-				BCD5868D2C651C42005605D9 /* NetworkManager.swift */,
+				BCD586CB2C652689005605D9 /* NetworkManager.swift */,
+				BCD586CD2C652690005605D9 /* NetworkConstants.swift */,
+				BCD586CF2C652695005605D9 /* APIConstants.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		BCD586942C651C42005605D9 /* FetchMatches */ = {
+		BCD586B72C652545005605D9 /* FetchMatches */ = {
 			isa = PBXGroup;
 			children = (
-				BCD5868F2C651C42005605D9 /* GetMatchesRequestModel.swift */,
+				BCD586B22C652545005605D9 /* GetMatchesRequestModel.swift */,
+				BCD586DE2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift */,
 			);
 			path = FetchMatches;
 			sourceTree = "<group>";
 		};
-		BCD586962C651C42005605D9 /* RequestModels */ = {
+		BCD586B82C652545005605D9 /* RequestModels */ = {
 			isa = PBXGroup;
 			children = (
-				BCD586942C651C42005605D9 /* FetchMatches */,
-				BCD586952C651C42005605D9 /* RequestModel.swift */,
+				BCD586D12C6526AC005605D9 /* RequestModel.swift */,
+				BCD586B72C652545005605D9 /* FetchMatches */,
 			);
 			path = RequestModels;
 			sourceTree = "<group>";
 		};
-		BCD5869C2C651C42005605D9 /* ResponseModels */ = {
+		BCD586BD2C652545005605D9 /* ResponseModels */ = {
 			isa = PBXGroup;
 			children = (
-				BCD586972C651C42005605D9 /* NowPlayingMoviesResponseModel.swift */,
+				BCD586B92C652545005605D9 /* MatchesResponseModel.swift */,
 			);
 			path = ResponseModels;
 			sourceTree = "<group>";
 		};
-		BCD5869E2C651C42005605D9 /* Services */ = {
+		BCD586BF2C652545005605D9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				BCD5869D2C651C42005605D9 /* MatchService.swift */,
+				BCD586BE2C652545005605D9 /* MatchServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		BCD5869F2C651C42005605D9 /* Network */ = {
+		BCD586C02C652545005605D9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BCD5868A2C651C42005605D9 /* Error */,
-				BCD5868E2C651C42005605D9 /* Manager */,
-				BCD586962C651C42005605D9 /* RequestModels */,
-				BCD5869C2C651C42005605D9 /* ResponseModels */,
-				BCD5869E2C651C42005605D9 /* Services */,
+				BCD586B02C652545005605D9 /* Error */,
+				BCD586B12C652545005605D9 /* Manager */,
+				BCD586B82C652545005605D9 /* RequestModels */,
+				BCD586BD2C652545005605D9 /* ResponseModels */,
+				BCD586BF2C652545005605D9 /* Services */,
 			);
-			name = Network;
-			path = ../../ReelVibe/ReelVibe/Network;
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BCD586D52C652791005605D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586852C6515B7005605D9 /* HomeScreenView.swift */,
+				BCD586D82C652932005605D9 /* MatchCardView.swift */,
+				BCD586DC2C658BDD005605D9 /* RespondedMatchesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BCD586D62C652799005605D9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586872C6515CD005605D9 /* HomeScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BCD586D72C6527A3005605D9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BCD586DA2C655557005605D9 /* MatchModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,20 +406,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCD586A22C651C42005605D9 /* NetworkConstants.swift in Sources */,
-				BCD586A42C651C42005605D9 /* GetMatchesRequestModel.swift in Sources */,
-				BCD586A02C651C42005605D9 /* ErrorModel.swift in Sources */,
-				BCD586A32C651C42005605D9 /* NetworkManager.swift in Sources */,
+				BCD586D42C6526C2005605D9 /* ErrorModel.swift in Sources */,
 				BCD5865D2C6514AC005605D9 /* Persistence.swift in Sources */,
-				BCD586A92C651C42005605D9 /* RequestModel.swift in Sources */,
-				BCD586AA2C651C42005605D9 /* NowPlayingMoviesResponseModel.swift in Sources */,
+				BCD586C62C652545005605D9 /* MatchesResponseModel.swift in Sources */,
+				BCD586D22C6526AC005605D9 /* RequestModel.swift in Sources */,
+				BCD586CE2C652690005605D9 /* NetworkConstants.swift in Sources */,
+				BCD586CC2C652689005605D9 /* NetworkManager.swift in Sources */,
 				BCD586882C6515CD005605D9 /* HomeScreenViewModel.swift in Sources */,
-				BCD586562C6514A9005605D9 /* ContentView.swift in Sources */,
-				BCD586A12C651C42005605D9 /* APIConstants.swift in Sources */,
+				BCD586CA2C652545005605D9 /* MatchServices.swift in Sources */,
+				BCD586DB2C655557005605D9 /* MatchModel.swift in Sources */,
+				BCD586DD2C658BDD005605D9 /* RespondedMatchesView.swift in Sources */,
 				BCD586862C6515B7005605D9 /* HomeScreenView.swift in Sources */,
+				BCD586D02C652695005605D9 /* APIConstants.swift in Sources */,
+				BCD586D92C652932005605D9 /* MatchCardView.swift in Sources */,
 				BCD586602C6514AC005605D9 /* MatchMate.xcdatamodeld in Sources */,
 				BCD586542C6514A9005605D9 /* MatchMateApp.swift in Sources */,
-				BCD586AF2C651C42005605D9 /* MatchService.swift in Sources */,
+				BCD586C12C652545005605D9 /* GetMatchesRequestModel.swift in Sources */,
+				BCD586DF2C65E8BA005605D9 /* GetSingleMatchRequestModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
