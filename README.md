@@ -1,6 +1,8 @@
 # MatchMate
 A sample SwiftUI app made as an coding project for Shaadi.com
 
+**Use the master branch for your building. It is upto date with the dev branch.**
+
 Features - 
 1. Ability to load random users on the Home Screen.
 2. You can respond to the users in the Home Screen, witth the Accept/Decline buttons, which would send them to the Responded Matches Page
