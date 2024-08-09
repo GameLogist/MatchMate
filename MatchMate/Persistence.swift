@@ -9,48 +9,131 @@ import CoreData
 
 struct PersistenceController {
     static let shared = PersistenceController()
-
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        return result
-    }()
-
+    
     let container: NSPersistentContainer
-
-    init(inMemory: Bool = false) {
+    
+    private init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "MatchMate")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                print("Unresolved error \(error), \(error.userInfo)")
+            } else {
+                print("Successfully loaded database!")
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+    
+    func fetchHomeMatches() -> [MatchEntity] {
+        let request = NSFetchRequest<MatchEntity>(entityName: "MatchEntity")
+        do {
+            return try container.viewContext.fetch(request)
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+        return []
+    }
+    
+    func fetchRespondedMatches() -> [RespondedMatchEntity] {
+        let request = NSFetchRequest<RespondedMatchEntity>(entityName: "RespondedMatchEntity")
+        do {
+            return try container.viewContext.fetch(request)
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+        return []
+    }
+    
+    func addToHomeMatches(name: String,
+                          age: Int,
+                          address: String,
+                          avatarURL: String,
+                          matchState: MatchState) -> NSManagedObjectID {
+        let newMatch = MatchEntity(context: container.viewContext)
+        newMatch.name = name
+        newMatch.age = Int16(age)
+        newMatch.address = address
+        newMatch.imageUrl = avatarURL
+        newMatch.matchState = Int16(matchState.rawValue)
+        
+        saveData()
+        
+        return newMatch.objectID
+    }
+    
+    func addToRespondedMatches(name: String,
+                               age: Int,
+                               address: String,
+                               avatarURL: String,
+                               matchState: MatchState) -> NSManagedObjectID {
+        let newMatch = RespondedMatchEntity(context: container.viewContext)
+        newMatch.name = name
+        newMatch.age = Int16(age)
+        newMatch.address = address
+        newMatch.imageUrl = avatarURL
+        newMatch.matchState = Int16(matchState.rawValue)
+        
+        saveData()
+        
+        return newMatch.objectID
+    }
+    
+    func editHomePageEntity(_ id: NSManagedObjectID, matchState: MatchState) {
+        do {
+            let entity = try container.viewContext.existingObject(with: id) as? MatchEntity
+            entity?.matchState = Int16(matchState.rawValue)
+            saveData()
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+    }
+    
+    func editRespondedPageEntity(_ id: NSManagedObjectID, matchState: MatchState) {
+        do {
+            let entity = try container.viewContext.existingObject(with: id) as? RespondedMatchEntity
+            entity?.matchState = Int16(matchState.rawValue)
+            saveData()
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+    }
+    
+    func deleteHomePageEntity(_ id: NSManagedObjectID) {
+        do {
+            if let entity = try container.viewContext.existingObject(with: id) as? MatchEntity {
+                container.viewContext.delete(entity)
+            }
+            saveData()
+        } catch let error {
+            print("Error Fetching : \(error)")
+        }
+    }
+    
+    func clearHomeMatches() {
+        // get all entities and loop over them
+        let entityNames = self.container.managedObjectModel.entities.map({ $0.name!})
+        entityNames.forEach { [self] entityName in
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try self.container.viewContext.execute(deleteRequest)
+                try self.container.viewContext.save()
+                print("Home matches cleared from CoreData")
+            } catch let error {
+                print("Error Clearing : \(error)")
+            }
+        }
+    }
+    
+    func saveData() {
+        do {
+            try container.viewContext.save()
+        } catch let error {
+            print("Error saving. \(error)")
+        }
     }
 }

@@ -14,4 +14,11 @@ class MatchServices {
             completion(result)
         }
     }
+    
+    class func getSingleMatch(completion: @escaping(Swift.Result<MatchesResponseModel?, ErrorModel>) -> Void) {
+        let request = GetSingleMatchRequestModel()
+        NetworkManager.shared.sendRequest(requestModel: request) { (result) in
+            completion(result)
+        }
+    }
 }

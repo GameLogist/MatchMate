@@ -11,6 +11,7 @@ struct MatchCardView: View {
     
     @Binding var match: Match
     @EnvironmentObject var homeScreenViewModel: HomeScreenViewModel
+    var ownerScreen: CardOnwer
     
     var body: some View {
         ZStack {
@@ -29,29 +30,72 @@ struct MatchCardView: View {
                     .foregroundStyle(.secondary)
                     .padding(16)
                 
-                HStack {
-                    Button(action: {
-                        homeScreenViewModel.matchAnswered(match: match, answer: false);
-                    }) {
+                if(match.matchState == .accepted) {
+                    Button("Accepted") {
+                        withAnimation {
+                            if(ownerScreen == .HomePage) {
+                                homeScreenViewModel.homeMatchAnswered(match: match, answer: .unanswered);
+                            } else {
+                                homeScreenViewModel.respondedMatchAnswered(match: match, answer: .unanswered);
+                            }
+                        }
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.extraLarge)
+                    .buttonBorderShape(.roundedRectangle)
+                    .foregroundColor(.green)
+                    .padding([.bottom], 32)
+                } else if (match.matchState == .declined) {
+                    Button("Declined") {
+                        withAnimation {
+                            if(ownerScreen == .HomePage) {
+                                homeScreenViewModel.homeMatchAnswered(match: match, answer: .unanswered);
+                            } else {
+                                homeScreenViewModel.respondedMatchAnswered(match: match, answer: .unanswered);
+                            }
+                        }}
+                    .buttonStyle(.bordered)
+                    .controlSize(.extraLarge)
+                    .buttonBorderShape(.roundedRectangle)
+                    .foregroundColor(.red)
+                    .padding([.bottom], 32)
+                } else {
+                    HStack {
+                        Button(action: {
+                            withAnimation {
+                                if(ownerScreen == .HomePage) {
+                                    homeScreenViewModel.homeMatchAnswered(match: match, answer: .declined);
+                                } else {
+                                    homeScreenViewModel.respondedMatchAnswered(match: match, answer: .declined);
+                                }
+                            }
+                        }) {
                             Image(systemName: "multiply")
-                          }
-                          .padding()
-                          .background(.red.opacity(0.7))
-                          .foregroundColor(.white)
-                          .cornerRadius(.infinity)
-                    Spacer()
-                        .frame(width: 12)
-                    Button(action: {
-                        homeScreenViewModel.matchAnswered(match: match, answer: true);
-                    }) {
+                        }
+                        .padding(24)
+                        .background(.red.opacity(0.7))
+                        .foregroundColor(.white)
+                        .cornerRadius(.infinity)
+                        Spacer()
+                            .frame(width: 24)
+                        Button(action: {
+                            withAnimation {
+                                if(ownerScreen == .HomePage) {
+                                    homeScreenViewModel.homeMatchAnswered(match: match, answer: .accepted);
+                                } else {
+                                    homeScreenViewModel.respondedMatchAnswered(match: match, answer: .accepted);
+                                }
+                            }
+                        }) {
                             Image(systemName: "checkmark")
-                          }
-                          .padding()
-                          .background(.green.opacity(0.7))
-                          .foregroundColor(.white)
-                          .cornerRadius(.infinity)
+                        }
+                        .padding(24)
+                        .background(.green.opacity(0.7))
+                        .foregroundColor(.white)
+                        .cornerRadius(.infinity)
+                    }
+                    .padding([.bottom], 32)
                 }
-                .padding([.bottom], 32)
             }
             .frame(maxWidth: .infinity)
         }

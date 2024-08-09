@@ -14,9 +14,11 @@ struct MatchMateApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeScreenView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(homeScreenViewModel)
+            NavigationView {
+                HomeScreenView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environmentObject(homeScreenViewModel)
+            }
         }
     }
 }
